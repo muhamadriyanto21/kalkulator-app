@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Modern</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  .calculator {
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .calculator button {
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-10 bg-white p-4 rounded shadow calculator">
+      <input type="text" id="display" class="form-control mb-3" disabled>
+      <div class="row">
+        <button class="btn btn-secondary col" onclick="appendToDisplay('7')">7</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('8')">8</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('9')">9</button>
+        <button class="btn btn-primary col" onclick="appendToDisplay('+')">+</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-secondary col" onclick="appendToDisplay('4')">4</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('5')">5</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('6')">6</button>
+        <button class="btn btn-primary col" onclick="appendToDisplay('-')">-</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-secondary col" onclick="appendToDisplay('1')">1</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('2')">2</button>
+        <button class="btn btn-secondary col" onclick="appendToDisplay('3')">3</button>
+        <button class="btn btn-primary col" onclick="appendToDisplay('*')">*</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-secondary col" onclick="appendToDisplay('0')">0</button>
+        <button class="btn btn-primary col" onclick="calculate()"><i class="fas fa-equals"></i></button>
+        <button class="btn btn-danger col" onclick="clearDisplay()"><i class="fas fa-trash"></i></button>
+        <button class="btn btn-primary col" onclick="appendToDisplay('/')"><i class="fas fa-divide"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap JS and Internal JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+  
+  function calculate() {
+    const display = document.getElementById('display');
+    try {
+      display.value = eval(display.value);
+    } catch (error) {
+      display.value = 'Error';
+    }
+  }
+  
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+</script>
+</body>
+</html>
